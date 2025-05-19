@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<GCBVS_VisitorSpot>Visitor Spot</GCBVS_VisitorSpot>
+	<GCBVS_VisitorSpot.AlreadyOnMap>Only one Visitor Spot is allowed per map. Removing the old spot.</GCBVS_VisitorSpot.AlreadyOnMap>
+</LanguageData>

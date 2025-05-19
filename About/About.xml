@@ -3,7 +3,13 @@
     <name>Visitor Spot</name>
     <author>"GentleCode"</author>
     <packageId>GentleCode.VisitorSpot</packageId>
-    <description>A spot where visitors visiting colony will stay, except hospitality's visitors and trade groups</description>
+    <description>A spot where visitors visiting colony will stay, except Hospitality's visitors and trade groups. 
+    
+    Only going to be useful if mod Hospitality and other mods that generate visitors are enabled together.
+    
+    本模组增添了一个指定普通殖民地访客停留的标点建筑，同时不影响Hospitality模组中访客的正常行为。
+    
+    本模组只会在同时启用了Hospitality和其他会生成殖民地访客的模组时有用处。</description>
     <supportedVersions>
         <li>1.5</li>
     </supportedVersions>

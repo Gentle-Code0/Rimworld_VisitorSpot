@@ -2,13 +2,13 @@
 <Defs>
 	<ThingDef ParentName="BuildingBase">
 		
-		<defName>GCBVS_BrothelVisitorSpot</defName>
-		<label>Brothel Visitor Spot</label>
-		<thingClass>BrothelVisitorSpot.BrothelVisitorSpot</thingClass>
+		<defName>GCBVS_VisitorSpot</defName>
+		<label>Visitor Spot</label>
+		<thingClass>VisitorSpot.VisitorSpot</thingClass>
 		<description>Designates a spot where visitors will gather and stay when visiting your colony.</description>
 		<rotatable>false</rotatable>
 		<graphicData>
-			<texPath>building/BrothelVisitorSpot1</texPath>
+			<texPath>building/VisitorSpot1</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>1.2</drawSize>
 		</graphicData>

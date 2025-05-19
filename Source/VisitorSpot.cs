@@ -6,22 +6,23 @@ using Verse;
 using Hospitality;
 using UnityEngine;
 
-namespace BrothelVisitorSpot
+namespace VisitorSpot
 {
-    public class BrothelVisitorSpot : Building
+    public class VisitorSpot : Building
     {
-        private int count = 0;
+        private int tickCount = 0;
 
-        public BrothelVisitorSpot()
+        //Ensure only one visitor spot exists in the current map
+        public VisitorSpot()
         {
             if (Current.Game.CurrentMap != null)
             {
                 foreach (Building thisBuilding in Current.Game.CurrentMap.listerBuildings.allBuildingsColonist)
                 {
-                    if (thisBuilding.def.defName.Equals("GCBVS_BrothelVisitorSpot"))
+                    if (thisBuilding.def.defName.Equals("GCBVS_VisitorSpot"))
                     {
                         thisBuilding.Destroy(DestroyMode.Vanish);
-                        Messages.Message("BrothelVisitorSpot.AlreadyOnMap".Translate(), MessageTypeDefOf.NegativeEvent);
+                        Messages.Message("GCBVS_VisitorSpot.AlreadyOnMap".Translate(), MessageTypeDefOf.NegativeEvent);
                         break;
                     }
                 }
@@ -31,16 +32,24 @@ namespace BrothelVisitorSpot
         public override void Tick()
         {
             base.Tick();
-            ++this.count;
-            if (this.count % 600 == 1)
+            ++this.tickCount;
+            if (this.tickCount % 600 == 1)
             {
-                this.count = 0;
+                //Check every 600 ticks in game, about 10 seconds in real world if game is set to run at 1x speed
+                
+                this.tickCount = 0;
+
+                //Get all group behavior groups in the current map
                 List<Lord> currentMapLords = base.Map.lordManager.lords;
+
+                //Get this visitor spot's position
                 IntVec3 spotPosition = base.Position;
                 foreach (var thisLord in currentMapLords)
                 {
+                    //Process every group
                     if (this.CheckVisitor(thisLord.LordJob))
                     {
+                        //Continue only if this group of visitors isn't Hospitality's visitor
                         FieldInfo chillSpotFI = thisLord.LordJob.GetType().GetField("chillSpot", BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
                         chillSpotFI.SetValue(thisLord.LordJob, spotPosition);
                         LordToil currentLordToil = thisLord.CurLordToil;
@@ -67,7 +76,7 @@ namespace BrothelVisitorSpot
 
         private bool CheckVisitor(LordJob lordJob)
         {
-            //Only set visitors to brothel visitor spot if they are not hospitality's visitors
+            //Only set common visitors to visitor spot if they are not hospitality's visitors.
             if (lordJob is Hospitality.LordJob_VisitColony)
                 return false;
             else if (lordJob is RimWorld.LordJob_VisitColony)
