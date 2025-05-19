@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<GCBVS_BrothelVisitorSpot>Brothel Visitor Spot</GCBVS_BrothelVisitorSpot>
+	<GCBVS_BrothelVisitorSpot.AlreadyOnMap>Only one Visitor Spot allowed per map. Removing old spot.</GCBVS_BrothelVisitorSpot.AlreadyOnMap>
+</LanguageData>
